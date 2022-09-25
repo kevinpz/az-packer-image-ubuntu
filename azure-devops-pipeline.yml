@@ -1,0 +1,23 @@
+# Auto trigger when changes on main
+trigger:
+  branches:
+    include:
+      - main
+
+# Load the pipeline template repo
+resources:
+  repositories:
+  - repository: az-packer-pipeline-template
+    type: github
+    endpoint: Azure
+    name: kevinpz/az-packer-pipeline-template
+
+# Run the build pipeline
+extends:
+  template: build-image.yml@az-packer-pipeline-template
+  parameters:
+    src_image_publisher: Canonical
+    src_image_offer: 0001-com-ubuntu-server-focal
+    src_image_sku: 20_04-lts-gen2
+    image_name: ubuntu2004lts
+    image_type: Linux

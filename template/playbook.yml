@@ -3,8 +3,11 @@
 - name: 'Provision Image'
   hosts: default
   become: true
-
   tasks:
+    - name: Update and upgrade apt packages
+      apt:
+        upgrade: yes
+        update_cache: yes
     - name: install Nginx
       package:
         name: 'nginx'

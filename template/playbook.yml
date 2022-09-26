@@ -12,3 +12,7 @@
       package:
         name: 'nginx'
         state: present
+    - name: install php
+      package:
+        name: 'php'
+        state: present

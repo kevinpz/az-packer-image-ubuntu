@@ -1,8 +1,8 @@
-# Auto trigger when changes on main
+# Auto trigger when a git tag is pushed
 trigger:
-  branches:
+  tags:
     include:
-      - main
+    - '*'
 
 # Load the pipeline template repo
 resources:

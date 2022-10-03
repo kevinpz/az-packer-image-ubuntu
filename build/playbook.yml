@@ -1,0 +1,13 @@
+---
+# playbook.yml
+- name: 'Provision Image'
+  hosts: default
+  become: true
+  tasks:
+    - name: Install packages
+      apt:
+        package:
+          - nginx
+          - php
+        state: latest
+        update_cache: true

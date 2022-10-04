@@ -1,9 +1,17 @@
 ---
-- hosts: all
+# playbook.yml
+- name: 'Configure Image'
+  hosts: all
+  become: true
   tasks:
-    - name: Update and upgrade apt packages
-      apt:
-        name: nginx
-        state: latest
-        update_cache: yes
+    - name: Update packages
+      ansible.builtin.apt:
+        update_cache: true
         upgrade: yes
+    - name: Install packages
+      ansible.builtin.apt:
+        package:
+          - curl
+          - unzip
+        state: latest
+        update_cache: true

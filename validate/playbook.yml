@@ -1,8 +1,8 @@
 ---
 # playbook.yml
 - name: 'Provision Image'
-  hosts: default
-  become: all
+  hosts: all
+  become: true
   tasks:
     - name: Gather the package facts
       ansible.builtin.package_facts:

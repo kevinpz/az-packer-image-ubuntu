@@ -4,15 +4,16 @@
   hosts: default
   become: true
   tasks:
-    - name: Update and upgrade apt packages
-      apt:
-        upgrade: yes
-        update_cache: yes
-    - name: install Nginx
-      package:
-        name: 'nginx'
-        state: present
-    - name: install php
-      package:
-        name: 'php'
-        state: present
+    - name: Gather the package facts
+      ansible.builtin.package_facts:
+        manager: auto
+
+    - name: Check if curl is installed
+      ansible.builtin.debug:
+        msg: "Package 'curl' is installed!"
+      when: "'curl' in ansible_facts.packages"
+
+    - name: Check if unzip is installed
+      ansible.builtin.debug:
+        msg: "Package 'unzip' is installed!"
+      when: "'unzip' in ansible_facts.packages"

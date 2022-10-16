@@ -1,6 +1,6 @@
 ---
 # playbook.yml
-- name: 'Provision Image'
+- name: 'Validate Image'
   hosts: all
   become: true
   tasks:

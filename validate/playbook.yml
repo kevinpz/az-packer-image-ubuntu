@@ -9,11 +9,11 @@
         manager: auto
 
     - name: Check if curl is installed
-      ansible.builtin.debug:
-        msg: "Package 'curl' is installed!"
-      when: "'curl' in ansible_facts.packages"
+      ansible.builtin.fail:
+        msg: "Package 'curl' is not installed!"
+      when: "'curl' not in ansible_facts.packages"
 
     - name: Check if unzip is installed
-      ansible.builtin.debug:
-        msg: "Package 'unzip' is installed!"
-      when: "'unzip' in ansible_facts.packages"
+      ansible.builtin.fail:
+        msg: "Package 'unzip' is not installed!"
+      when: "'unzip' not in ansible_facts.packages"

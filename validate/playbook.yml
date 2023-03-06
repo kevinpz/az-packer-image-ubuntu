@@ -16,4 +16,4 @@
     - name: Check if unzip is installed
       ansible.builtin.fail:
         msg: "Package 'unzip' is not installed!"
-      when: "'unzip' not in ansible_facts.packages"
+      when: "'unziptest' not in ansible_facts.packages"
